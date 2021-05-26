@@ -1,11 +1,23 @@
 const fetch = require("node-fetch") ;
 
+let infoSpecialty = {
+    name: '',
+    country: '',
+    overageSalary: '',
+    topCompanies: [],
+}
+
+let vacancies = {}
+
 function createUrl(specialty, country){
+    infoSpecialty.name = specialty;
+    infoSpecialty.country = country;
+    specialty = specialty.replace(/ /g, '%20');
     const mainInfoUrl = 'https://api.adzuna.com/v1/api/jobs' +
-        '/' + country + '/search/1?app_id=d8bb74a4&app_key=d3dfd2a0f3f8dae94fa84170169c57ad&what=' + specialty +
+        '/' + country + '/search/1?app_id=196c1ee0&app_key=a423eadba5ff26ac4704d9b304c85bad\t&what=' + specialty +
         '&category=it-jobs'
     const topCompaniesUrl = 'https://api.adzuna.com/v1/api/jobs/' + country + '/top_companies?' +
-        'app_id=d8bb74a4&app_key=d3dfd2a0f3f8dae94fa84170169c57ad&what=' + specialty + '&category=it-jobs'
+        'app_id=196c1ee0&app_key=a423eadba5ff26ac4704d9b304c85bad&what=' + specialty + '&category=it-jobs'
     let masUrl = [mainInfoUrl, topCompaniesUrl];
     return masUrl
 }
@@ -26,16 +38,7 @@ async function Requests(urlMain, urlCompanies) {
     return response
 }
 
-async function selectInfo(urlArr){
-
-    let infoSpecialty = {
-        name: '',
-        country: '',
-        overageSalary: '',
-        topCompanies: [],
-    }
-
-    let vacancies = {}
+async function prepairInfo(urlArr){
 
     let currentVacancy = {
         companyName: '',
@@ -49,7 +52,7 @@ async function selectInfo(urlArr){
     let urlMain = urlArr[0];
     let urlCompanies = urlArr[1];
 
-    Requests(urlMain, urlCompanies)
+    await Requests(urlMain, urlCompanies)
         .then(response => {
             infoSpecialty.overageSalary = response.mainInfo.mean;
             for (let i = 0; i < 5; i++){
@@ -58,16 +61,15 @@ async function selectInfo(urlArr){
             let i = 0;
             for (let key of response.mainInfo.results){
                 i ++
-                currentVacancy.companyName = key.company.display_name
-                currentVacancy.description = key.description.replace(/<[^>]+>/g,'')
+                currentVacancy.companyName = key.company.display_name;
+                currentVacancy.description = key.description.replace(/<[^>]+>/g,'');
                 currentVacancy.salaryMax = key.salary_max
-                currentVacancy.salaryMin = key.salary_min
-                currentVacancy.url = key.redirect_url
+                currentVacancy.salaryMin = key.salary_min;
+                currentVacancy.url = key.redirect_url;
 
                 for (let area of key.location.area){
                     currentVacancy.location.push(area)
                 }
-
                 let clone = {}
                 for (let key in currentVacancy) {
                     clone[key] = currentVacancy[key];
@@ -76,15 +78,25 @@ async function selectInfo(urlArr){
                 vacancies[i] = clone
                 currentVacancy.location = []
             }
-            console.log(infoSpecialty)
-            return {infoSpecialty, vacancies}
         })
         .catch((err) => console.log(err))
+    return {infoSpecialty, vacancies}
 }
 
-let urlArr = createUrl('JAVA', 'gb')
-selectInfo(urlArr)
+async function selectInfo(specialty, country){
+    let urlArr = createUrl(specialty, country)
+    let response = await prepairInfo(urlArr)
+    return response
+}
 
-module.exports.createUrl = createUrl;
-module.exports.Requests = Requests;
+function getObjectParametrs(obj){
+    for (let key in obj){
+        console.log(key)
+    }
+}
+
+
+// module.exports.createUrl = createUrl;
+// module.exports.prepairInfo = prepairInfo;
 module.exports.selectInfo = selectInfo;
+module.exports.getObjectParametrs = getObjectParametrs;
