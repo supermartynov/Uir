@@ -14,11 +14,12 @@ function createUrl(specialty, country){
     infoSpecialty.country = country;
     specialty = specialty.replace(/ /g, '%20');
     const mainInfoUrl = 'https://api.adzuna.com/v1/api/jobs' +
-        '/' + country + '/search/1?app_id=196c1ee0&app_key=a423eadba5ff26ac4704d9b304c85bad\t&what=' + specialty +
+        '/' + country + '/search/1?app_id=196c1ee0&app_key=a423eadba5ff26ac4704d9b304c85bad&what=' + specialty +
         '&category=it-jobs'
     const topCompaniesUrl = 'https://api.adzuna.com/v1/api/jobs/' + country + '/top_companies?' +
         'app_id=196c1ee0&app_key=a423eadba5ff26ac4704d9b304c85bad&what=' + specialty + '&category=it-jobs'
     let masUrl = [mainInfoUrl, topCompaniesUrl];
+    console.log(masUrl)
     return masUrl
 }
 
@@ -96,7 +97,5 @@ function getObjectParametrs(obj){
 }
 
 
-// module.exports.createUrl = createUrl;
-// module.exports.prepairInfo = prepairInfo;
 module.exports.selectInfo = selectInfo;
 module.exports.getObjectParametrs = getObjectParametrs;

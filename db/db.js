@@ -4,13 +4,13 @@ const getInfo = require('./getInfoModule')
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
 
-let specialty = ["Java developer"]
+let specialty = ["Java developer", "C++ developer"]
+
 
 async function fillDataBase(specialtiesArr, country){
     for (let i = 0; i < specialtiesArr.length; i++){
         let currentSpecialtyInfo = {};
         let currentVacancies = {};
-
         await getInfo.selectInfo(specialtiesArr[i], country)
             .then(async (res) => {
                 currentSpecialtyInfo = res.infoSpecialty
@@ -35,18 +35,10 @@ async function fillDataBase(specialtiesArr, country){
             })
     }
 }
+//Внизу закомментирован старый метод создания таблиц
 
-class Specialties extends Model {}
+/*class Specialties extends Model {}
 class Vacancies extends Model {}
-class Example extends Model {}
-
-Example.init({
-    id: {type: Sequelize.INTEGER, primaryKey: true}
-},{
-    sequelize,
-    modelName: 'example'
-})
-
 
 Specialties.init({
     id: {
@@ -61,7 +53,7 @@ Specialties.init({
     },
     overageSalary: {
         type: Sequelize.DOUBLE,
-        allowNull: false
+        allowNull: true
     },
     topCompanies: {
         type: Sequelize.STRING,
@@ -71,7 +63,19 @@ Specialties.init({
         type: Sequelize.STRING,
         allowNull: false
     },
+    softSkills: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
+    hardSkills: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
     description: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
+    keyRespons: {
         type: Sequelize.TEXT,
         allowNull: true
     }
@@ -109,7 +113,10 @@ Vacancies.init({
         type: Sequelize.STRING,
         allowNull: false
     },
-    specialtiesId: Sequelize.INTEGER,
+
+    /!*specialtiesId: {
+        type: Sequelize.INTEGER
+    }*!/
     url : {
         type: Sequelize.TEXT
     }
@@ -117,7 +124,86 @@ Vacancies.init({
 }, {
     sequelize,
     modelName: 'vacancies'
-})
+})*/
+
+//Вверху старый метод создания таблиц
+//Снизу новый метод создания таблиц
+
+const Specialties = sequelize.define("specialties", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    overageSalary: {
+        type: Sequelize.DOUBLE,
+        allowNull: true
+    },
+    topCompanies: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    country: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    softSkills: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
+    hardSkills: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
+    description: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    },
+    keyRespons: {
+        type: Sequelize.TEXT,
+        allowNull: true
+    }
+});
+
+const Vacancies = sequelize.define("vacancies", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
+    companyName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    minSalary: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+    },
+    maxSalary: {
+        type: Sequelize.DOUBLE,
+        allowNull: false,
+    },
+    description: {
+        type: Sequelize.TEXT,
+        allowNull: false
+    },
+    location: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+
+
+    url : {
+        type: Sequelize.TEXT
+    }
+
+});
 
 //alter table vacancies add column specialtiesId Integer;
 // alter table vacancies add foreign key (specialtiesId) references specialties(id);
@@ -136,11 +222,13 @@ async function checkConnection(){
 
 
 async function createAgain() {
-    let Speciality_promise = await Specialties.sync({force: true});
-    let Vacancy = await Vacancies.sync({force: true});
+    //await Specialties.sync({force: true});
+    //await Vacancies.sync({force: true});
+    console.log(typeof (Vacancies))
     Specialties.hasMany(Vacancies, {foreignKey: 'specialtyId'})
     Vacancies.belongsTo(Specialties)
-    console.log("The table for the User model was just (re)created!");
+    //console.log("The table for the User model was just (re)created!");
 }
-//createAgain()
-fillDataBase(specialty, 'ru')
+
+createAgain()
+//fillDataBase(specialty, 'gb')
