@@ -95,7 +95,7 @@ Vacancies.init({
     },
     companyName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false  //fdvddfg
     },
     minSalary: {
         type: Sequelize.DOUBLE,
