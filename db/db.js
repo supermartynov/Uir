@@ -4,10 +4,12 @@ const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
 const Specialties = require('./models/specialties')
 const Vacancies = require('./models/vacancies')
+const Responsibilities = require('./models/responsibilities')
+const resp_specialty = require('./models/resp_specialty')
+
+
 
 let specialty = ["Java developer", "C++ developer"]
-
-
 async function fillDataBase(specialtiesArr, country){
     for (let i = 0; i < specialtiesArr.length; i++){
         let currentSpecialtyInfo = {};
@@ -52,9 +54,10 @@ async function checkConnection(){
 async function createAgain() {
     await Specialties.sync({force: true});
     await Vacancies.sync({force: true});
+    await Responsibilities.sync({force: true})
+    await resp_specialty.sync({force: true})
 
-    //console.log("The table for the User model was just (re)created!");
 }
 
-//createAgain()
-fillDataBase(specialty, 'gb')
+createAgain()
+//fillDataBase(specialty, 'gb')

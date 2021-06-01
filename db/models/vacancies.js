@@ -10,15 +10,15 @@ Vacancies.init({
         primaryKey: true,
         allowNull: false
     },
-    companyName: {
+    company_name: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    minSalary: {
+    min_salary: {
         type: Sequelize.DOUBLE,
         allowNull: false,
     },
-    maxSalary: {
+    max_salary: {
         type: Sequelize.DOUBLE,
         allowNull: false,
     },
