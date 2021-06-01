@@ -1,11 +1,8 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
-
-
+const Vacancies = require('./vacancies')
 
 class Specialties extends Model {}
-class Vacancies extends Model {}
-
 Specialties.init({
     id: {
         type: Sequelize.INTEGER,
@@ -20,10 +17,6 @@ Specialties.init({
     overageSalary: {
         type: Sequelize.DOUBLE,
         allowNull: true
-    },
-    topCompanies: {
-        type: Sequelize.STRING,
-        allowNull: false
     },
     country: {
         type: Sequelize.STRING,
@@ -51,4 +44,5 @@ Specialties.init({
     modelName: 'specialties'
 })
 
-
+Specialties.hasMany(Vacancies, {foreignKey: 'specialtyId', onUpdate: 'Cascade', onDelete: 'Cascade'})
+module.exports = Specialties;

@@ -2,6 +2,7 @@ const { Sequelize, DataTypes, Model } = require('sequelize');
 const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
 
 
+class Vacancies extends Model {}
 Vacancies.init({
     id: {
         type: Sequelize.INTEGER,
@@ -11,7 +12,7 @@ Vacancies.init({
     },
     companyName: {
         type: Sequelize.STRING,
-        allowNull: false  //fdvddfg
+        allowNull: false
     },
     minSalary: {
         type: Sequelize.DOUBLE,
@@ -29,15 +30,13 @@ Vacancies.init({
         type: Sequelize.STRING,
         allowNull: false
     },
+    url : {
+        type: Sequelize.TEXT
+    }
 
-/!*specialtiesId: {
-type: Sequelize.INTEGER
-}*!/
-url : {
-    type: Sequelize.TEXT
-}
-
-}, {
-    sequelize,
-        modelName: 'vacancies'
+    }, {
+        sequelize,
+    modelName: 'vacancies'
 })
+
+module.exports = Vacancies;
