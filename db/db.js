@@ -5,8 +5,8 @@ const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
 const Specialties = require('./models/specialties')
 const Vacancies = require('./models/vacancies')
 const Responsibilities = require('./models/responsibilities')
-const resp_specialty = require('./models/resp_specialty')
-
+const RespSpecialty = require('./models/resp_specialty')
+const SkillSpecialty = require('./models/skill_specialty')
 
 
 let specialty = ["Java developer", "C++ developer"]
@@ -55,7 +55,8 @@ async function createAgain() {
     await Specialties.sync({force: true});
     await Vacancies.sync({force: true});
     await Responsibilities.sync({force: true})
-    await resp_specialty.sync({force: true})
+    await RespSpecialty.sync({force: true})
+    await SkillSpecialty.sync({force: true})
 
 }
 
