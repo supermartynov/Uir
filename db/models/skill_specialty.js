@@ -25,7 +25,8 @@ SkillSpecialty.init({
     }
 }, {
     sequelize,
-    modelName: 'skill_specialty'
+    modelName: 'skill_specialty',
+    timestamps: false
 })
 
 Skills.belongsToMany(Specialties, {through: 'skill_specialty', foreignKey: 'id', otherKey: 'id' });

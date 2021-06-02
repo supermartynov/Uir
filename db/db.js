@@ -26,7 +26,6 @@ async function fillDataBase(specialtiesArr, country) {
                     country: country
                 })
                 for (let j = 1; j < 6; j++) {
-                        console.log(currentVacancies[String(j)].salaryMin)
                         await Vacancies.create({
                         min_salary: (!!currentVacancies[String(j)].salaryMin) ? currentVacancies[String(j)].salaryMin : 0,
                         max_salary: currentVacancies[String(j)].salaryMax ? currentVacancies[String(j)].salaryMax : 0,
@@ -42,18 +41,30 @@ async function fillDataBase(specialtiesArr, country) {
 }
 
 async function insertExample(responsDescriptionArr, specialtyId) {
+    await Skills.create({
+        skill_name: 'Умение вдохновлять',
+        type : '0'
+    })
+    await Skills.create({
+        skill_name: 'Знание C++',
+        type : '1'
+    })
+    await SkillSpecialty.create({
+        skill_id: 1,
+        specialty_id: 1
+    })
+    await SkillSpecialty.create({
+        skill_id: 2,
+        specialty_id: 1
+    })
     for (let i = 0; i < responsDescriptionArr.length; i++) {
         await Responsibilities.create({
             description: responsDescriptionArr[i]
-        })
-        Responsibilities.findAll({
-
         })
         await RespSpecialty.create({
             responsibility_id: i + 1,
             specialty_id: specialtyId
         })
-
     }
 }
 
