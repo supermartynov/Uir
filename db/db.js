@@ -1,4 +1,3 @@
-const fetch = require("node-fetch");
 const getInfo = require('./getInfoModule')
 const {Sequelize, DataTypes, Model} = require('sequelize');
 const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
