@@ -21,7 +21,8 @@ Skills.init({
     }
 },{
     sequelize,
-    modelName: 'skills'
+    modelName: 'skills',
+    timestamps: false
 })
 
 module.exports = Skills

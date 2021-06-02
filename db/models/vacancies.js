@@ -36,7 +36,8 @@ Vacancies.init({
 
     }, {
         sequelize,
-    modelName: 'vacancies'
+    modelName: 'vacancies',
+    timestamps: false
 })
 
 module.exports = Vacancies;

@@ -6,7 +6,8 @@ Responsibilities.init({
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autIncrement: true,
+        autoIncrement: true,
+        allowNull: false
     },
     description: {
         type: Sequelize.STRING,
@@ -14,7 +15,8 @@ Responsibilities.init({
     }
 }, {
     sequelize,
-    modelName: 'responsibilities'
+    modelName: 'responsibilities',
+    timestamps: false
 })
 
 module.exports = Responsibilities;

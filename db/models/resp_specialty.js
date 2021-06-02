@@ -25,7 +25,8 @@ RespSpecialty.init({
     }
 }, {
     sequelize,
-    modelName: 'resp_specialty'
+    modelName: 'resp_specialty',
+    timestamps: false
 })
 
 Responsibilities.belongsToMany(Specialties, {through: 'resp_specialty', foreignKey: 'id', otherKey: 'id' });

@@ -3,7 +3,7 @@ const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
 const Specialties = require('./specialties')
 const Skills = require('./skills')
 
-class RespSpecialty extends Model {}
+class SkillSpecialty extends Model {}
 
 
 SkillSpecialty.init({
@@ -29,6 +29,6 @@ SkillSpecialty.init({
 })
 
 Skills.belongsToMany(Specialties, {through: 'skill_specialty', foreignKey: 'id', otherKey: 'id' });
-Specialties.belongsToMany(Responsibilities, {through: 'skill_specialty', foreignKey: 'id', otherKey: 'id' });
+Specialties.belongsToMany(Skills, {through: 'skill_specialty', foreignKey: 'id', otherKey: 'id' });
 
-module.exports = RespSpecialty
+module.exports = SkillSpecialty

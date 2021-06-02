@@ -37,7 +37,8 @@ Specialties.init({
     }
 },{
     sequelize,
-    modelName: 'specialties'
+    modelName: 'specialties',
+    timestamps: false
 })
 
 
