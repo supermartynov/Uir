@@ -1,6 +1,5 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
-const Vacancies = require('./vacancies')
+import {Sequelize, DataTypes, Model, sequelize} from './imports.js'
+import {Vacancies} from './vacancies.js'
 
 class Skills extends Model {}
 
@@ -25,4 +24,4 @@ Skills.init({
     timestamps: false
 })
 
-module.exports = Skills
+export {Skills};

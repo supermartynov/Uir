@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "rest api UIR example",
   "main": "server/app.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "start": "node server/app.js",
     "dev": "nodemon"

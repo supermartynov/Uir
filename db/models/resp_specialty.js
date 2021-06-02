@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
-const Specialties = require('./specialties')
-const Responsibilities = require('./responsibilities')
+import {Sequelize, DataTypes, Model, sequelize} from './imports.js'
+import {Specialties} from './specialties.js'
+import {Responsibilities} from './Responsibilities.js'
+
 
 class RespSpecialty extends Model {}
 
@@ -32,4 +32,4 @@ RespSpecialty.init({
 Responsibilities.belongsToMany(Specialties, {through: 'resp_specialty', foreignKey: 'id', otherKey: 'id' });
 Specialties.belongsToMany(Responsibilities, {through: 'resp_specialty', foreignKey: 'id', otherKey: 'id' });
 
-module.exports = RespSpecialty
+export {RespSpecialty};

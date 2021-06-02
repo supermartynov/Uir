@@ -1,12 +1,11 @@
-const getInfo = require('./getInfoModule')
-const {Sequelize, DataTypes, Model} = require('sequelize');
-const sequelize = new Sequelize('postgres://Elena:@localhost:5422/jobs')
-const Specialties = require('./models/specialties')
-const Vacancies = require('./models/vacancies')
-const Skills = require('./models/skills')
-const Responsibilities = require('./models/responsibilities')
-const RespSpecialty = require('./models/resp_specialty')
-const SkillSpecialty = require('./models/skill_specialty')
+import * as getInfo from "./getInfoModule.js"
+import {Sequelize, DataTypes, Model, sequelize} from './models/imports.js'
+import {Specialties} from './models/specialties.js';
+import {Vacancies} from './models/vacancies.js'
+import {Skills} from './models/skills.js'
+import {Responsibilities} from './models/responsibilities.js'
+import {RespSpecialty} from './models/resp_specialty.js'
+import {SkillSpecialty} from './models/skill_specialty.js'
 
 
 let specialty = ["Java developer", "C++ developer"]
@@ -76,8 +75,8 @@ async function createAgain() {
     await SkillSpecialty.sync({force: true})
 }
 
-responsArrCplus = ['Создание драйверов устройств', 'Создание приложений', 'Создание игр']
-responsArrJava = ['Разработка архитектуры и программных модулей десктопных, веб- и мобильных приложений'
+let responsArrCplus = ['Создание драйверов устройств', 'Создание приложений', 'Создание игр']
+let responsArrJava = ['Разработка архитектуры и программных модулей десктопных, веб- и мобильных приложений'
     , 'Создание приложений', 'Техническая поддержка приложений на всех этапах их использования']
 
 async function fillDB() {

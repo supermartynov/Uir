@@ -1,4 +1,4 @@
-const fetch = require("node-fetch") ;
+import fetch from 'node-fetch';
 
 let infoSpecialty = {
     name: '',
@@ -90,6 +90,8 @@ async function checkConnection(){
         });
 }
 
-module.exports.selectInfo = selectInfo;
+export {selectInfo}
+
+/*module.exports.selectInfo = selectInfo;
 module.exports.getObjectParametrs = getObjectParametrs;
-module.exports.checkConnection = checkConnection;
+module.exports.checkConnection = checkConnection;*/

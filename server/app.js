@@ -1,23 +1,20 @@
-const express = require('express')
+import express from 'express';
 const app = express();
-const path = require('path');
-const router = require('./router');
+
+import {router} from './router.js';
 
 app.use(express.json())
 app.use('/api', router)
 
 async function startApp() {
-    app.use(express.static(path.resolve(__dirname, 'client')));
-    app.listen(3000, () => {
-        console.log('server has been statred on port 3000...')
+    app.listen(5000, () => {
+        console.log('server has been statred on port 5000...')
     });
 }
 
 app.get('/', function (req, res) {
-
+    res.status(200)
+    res.send('lolksxddek')
 });
-app.post('/', (req, resp) =>{
-
-})
 
 startApp()

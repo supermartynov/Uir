@@ -1,9 +1,11 @@
-const Router = require('express')
-
+import Router from 'express'
 const router = new Router()
 
-router.get('/api', (req, resp) => {
+router.get('/', (req, resp) => {
         console.log('everythingOk')
+        resp.send('lolkek')
     }
 )
 router.get('/specialty/:id')
+
+export  {router};
