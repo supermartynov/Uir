@@ -73,7 +73,7 @@ async function createAgain() {
     await Skills.sync({force: true})
     await RespSpecialty.sync({force: true})
     await SkillSpecialty.sync({force: true})
-}
+} //;
 
 let responsArrCplus = ['Создание драйверов устройств', 'Создание приложений', 'Создание игр']
 let responsArrJava = ['Разработка архитектуры и программных модулей десктопных, веб- и мобильных приложений'
@@ -82,8 +82,8 @@ let responsArrJava = ['Разработка архитектуры и прогр
 async function fillDB() {
     await createAgain()
     await fillDataBase(specialty, 'gb')
-    await insertExample(responsArrCplus, 1)
-    await insertExample(responsArrJava, 2)
+    //await insertExample(responsArrCplus, 1)
+    //await insertExample(responsArrJava, 2)
 }
 
 
