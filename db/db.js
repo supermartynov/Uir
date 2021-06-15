@@ -82,8 +82,8 @@ let responsArrJava = ['Разработка архитектуры и прогр
 async function fillDB() {
     await createAgain()
     await fillDataBase(specialty, 'gb')
-    //await insertExample(responsArrCplus, 1)
-    //await insertExample(responsArrJava, 2)
+    await insertExample(responsArrCplus, 1)
+    await insertExample(responsArrJava, 2)
 }
 
 
