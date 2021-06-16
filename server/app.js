@@ -1,6 +1,5 @@
 import express from 'express';
 const app = express();
-//import {getSpecialtiesForMainPage} from "./getInfoFromDB.js";
 import bodyparser from 'body-parser'
 import cors from 'cors'
 import {routerSpecialties} from '../routes/specialties.js'

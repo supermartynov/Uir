@@ -1,4 +1,4 @@
-import {genericCrud} from './generricController.js';
+import {genericCrud} from './genericController.js';
 import {Specialties} from '../db/models/specialties.js';
 
 const specialtyController = {

@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <button v-on:click="fetchh">{{ msg }}</button>
+    <button>{{ msg }}</button>
   </div>
 </template>
-
 <script>
 export default {
   name: 'app',
@@ -13,10 +12,6 @@ export default {
     }
   },
   methods: {
-    async fetchh(){
-      await fetch('http://localhost:5005/')
-      .then(res => console.log('everything_ok'))
-    },
     men() {
       this.msg = '1'
     }
