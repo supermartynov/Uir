@@ -8,7 +8,7 @@ import {RespSpecialty} from './models/resp_specialty.js'
 import {SkillSpecialty} from './models/skill_specialty.js'
 
 
-let specialty = ["Java developer", "C++ developer"]
+let specialty = ["Java developer", "C++ developer", "Go developer"]
 
 async function fillDataBase(specialtiesArr, country) {
     for (let i = 0; i < specialtiesArr.length; i++) {
@@ -75,15 +75,11 @@ async function createAgain() {
     await SkillSpecialty.sync({force: true})
 } //;
 
-let responsArrCplus = ['Создание драйверов устройств', 'Создание приложений', 'Создание игр']
-let responsArrJava = ['Разработка архитектуры и программных модулей десктопных, веб- и мобильных приложений'
-    , 'Создание приложений', 'Техническая поддержка приложений на всех этапах их использования']
+
 
 async function fillDB() {
     await createAgain()
     await fillDataBase(specialty, 'gb')
-    await insertExample(responsArrCplus, 1)
-    await insertExample(responsArrJava, 2)
 }
 
 
