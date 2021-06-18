@@ -22,14 +22,6 @@ Specialties.init({
         type: Sequelize.STRING,
         allowNull: false
     },
-    soft_skills: {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    hard_skills: {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
     description: {
         type: Sequelize.TEXT,
         allowNull: true

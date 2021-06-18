@@ -28,7 +28,20 @@ const genericCrud = (model) => ({
         } catch (err) {
             return res.status(400).send(err)
         }
-    } //only for vacancies
+    }, //only for vacancies
+
+    async addDescription({ params: {id}, body}, res) {
+        try {
+            const item = await model.update( body, {
+                where: {
+                    id: id
+                }
+            })
+            return res.status(200).send(item)
+        } catch (err) {
+            return res.status(400).send(err)
+        }
+    } //only for specialties
 
 })
 

@@ -17,7 +17,7 @@ async function startApp() {
 }
 
 app.get('/', function (req, res) {
-    res.send({messege: 'hello world!'})
+    res.send({messege: 'Welcome!'})
 });
 
 startApp()
