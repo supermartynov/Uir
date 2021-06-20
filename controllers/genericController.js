@@ -17,6 +17,17 @@ const genericCrud = (model) => ({
         }
     },
 
+    async getNames(req, res) {
+        try {
+            const item = await model.findAll({
+                attributes: ['id', 'name'],
+            });
+            return res.status(200).send(item)
+        } catch (err) {
+            return res.status(400).send(err)
+        }
+    },
+
     async getAllVacancies({ params: {id} }, res){
         try {
             const item = await model.findAll({
