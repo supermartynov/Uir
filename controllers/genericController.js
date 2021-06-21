@@ -28,8 +28,9 @@ const genericCrud = (model) => ({
         }
     },
 
-    async getAllVacancies({ params: {id} }, res){
+    async getAllVacancies(req, res){
         try {
+            const id = req.query.specialtyId
             const item = await model.findAll({
                 where: {
                     "specialtyId" : id
