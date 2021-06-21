@@ -9,7 +9,7 @@ import {SkillSpecialty} from './models/skill_specialty.js'
 import {Knowledge} from "./models/knowledge.js";
 
 
-let specialty = [] //["Java developer", "C++ developer", "Go developer"]
+let specialty = ["Java developer", "C++ developer", "Go developer", "PHP developer", "Python developer"]
 
 async function fillDataBase(specialtiesArr, country) {
     for (let i = 0; i < specialtiesArr.length; i++) {
@@ -41,13 +41,14 @@ async function fillDataBase(specialtiesArr, country) {
 
 
 async function createAgain() {
-    await SkillSpecialty.sync({force: true})
     await Knowledge.sync({force: true})
     await Specialties.sync({force: true});
     await Vacancies.sync({force: true});
     await Responsibilities.sync({force: true})
     await Skills.sync({force: true})
     await RespSpecialty.sync({force: true})
+    await SkillSpecialty.sync({force: true})
+
 
 } //;
 

@@ -6,6 +6,6 @@ import { controller } from '../controllers/index.js'
 
 routerSkillSpecialty.route('/').get(controller.skillSpecialty.getAll)
 routerSkillSpecialty.route('/:id').get(controller.skillSpecialty.get)
-routerSkillSpecialty.route('/').post(controller.skillSpecialty.create)
+routerSkillSpecialty.route('/').put(controller.skillSpecialty.create)
 
 export {routerSkillSpecialty}

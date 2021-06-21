@@ -6,6 +6,6 @@ import { controller } from '../controllers/index.js'
 
 routerKnowledge.route('/').get(controller.knowledge.getAll)
 routerKnowledge.route('/:id').get(controller.knowledge.get)
-routerKnowledge.route('/').post(controller.knowledge.create)
+routerKnowledge.route('/').put(controller.knowledge.create)
 
 export {routerKnowledge}

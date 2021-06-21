@@ -1,5 +1,6 @@
 import {Sequelize, DataTypes, Model, sequelize} from './imports.js'
 import {SkillSpecialty} from "./skill_specialty.js";
+import {Skills} from "./skills.js";
 
 
 class Knowledge extends Model {}
@@ -21,7 +22,7 @@ Knowledge.init({
 }
 )
 
-//Knowledge.hasMany(SkillSpecialty, {foreignKey: 'knowledge_id', onUpdate: 'Cascade', onDelete: 'Cascade'});
+Knowledge.hasMany(SkillSpecialty, {foreignKey: 'knowledge_id', onUpdate: 'Cascade', onDelete: 'Cascade'});
 
 
 export {Knowledge}

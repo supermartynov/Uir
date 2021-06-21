@@ -6,6 +6,6 @@ import { controller } from '../controllers/index.js'
 
 routerSkills.route('/').get(controller.skills.getAll)
 routerSkills.route('/:id').get(controller.skills.get)
-routerSkills.route('/').post(controller.skills.create)
+routerSkills.route('/').put(controller.skills.create)
 
 export {routerSkills}
