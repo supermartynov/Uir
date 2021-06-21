@@ -17,6 +17,15 @@ const genericCrud = (model) => ({
         }
     },
 
+    async create({ body }, res) {
+        try {
+            const item = await model.create(body)
+            return req.status(200).send(item)
+        } catch (err) {
+            return res.status(400).send(err)
+        }
+    },
+
     async getNames(req, res) {
         try {
             const item = await model.findAll({

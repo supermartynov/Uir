@@ -6,9 +6,10 @@ import {Skills} from './models/skills.js'
 import {Responsibilities} from './models/responsibilities.js'
 import {RespSpecialty} from './models/resp_specialty.js'
 import {SkillSpecialty} from './models/skill_specialty.js'
+import {Knowledge} from "./models/knowledge.js";
 
 
-let specialty = ["Java developer", "C++ developer", "Go developer"]
+let specialty = [] //["Java developer", "C++ developer", "Go developer"]
 
 async function fillDataBase(specialtiesArr, country) {
     for (let i = 0; i < specialtiesArr.length; i++) {
@@ -38,43 +39,17 @@ async function fillDataBase(specialtiesArr, country) {
     }
 }
 
-async function insertExample(responsDescriptionArr, specialtyId) {
-    await Skills.create({
-        skill_name: 'Умение вдохновлять',
-        type : '0'
-    })
-    await Skills.create({
-        skill_name: 'Знание C++',
-        type : '1'
-    })
-    await SkillSpecialty.create({
-        skill_id: 1,
-        specialty_id: 1
-    })
-    await SkillSpecialty.create({
-        skill_id: 2,
-        specialty_id: 1
-    })
-    for (let i = 0; i < responsDescriptionArr.length; i++) {
-        await Responsibilities.create({
-            description: responsDescriptionArr[i]
-        })
-        await RespSpecialty.create({
-            responsibility_id: i + 1,
-            specialty_id: specialtyId
-        })
-    }
-}
 
 async function createAgain() {
+    await SkillSpecialty.sync({force: true})
+    await Knowledge.sync({force: true})
     await Specialties.sync({force: true});
     await Vacancies.sync({force: true});
     await Responsibilities.sync({force: true})
     await Skills.sync({force: true})
     await RespSpecialty.sync({force: true})
-    await SkillSpecialty.sync({force: true})
-} //;
 
+} //;
 
 
 async function fillDB() {

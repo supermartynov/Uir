@@ -29,7 +29,7 @@ RespSpecialty.init({
     timestamps: false
 })
 
-Responsibilities.belongsToMany(Specialties, {through: 'resp_specialty', foreignKey: 'id', otherKey: 'id' });
-Specialties.belongsToMany(Responsibilities, {through: 'resp_specialty', foreignKey: 'id', otherKey: 'id' });
+//Responsibilities.belongsToMany(Specialties, {through: 'resp_specialty', foreignKey: 'id', otherKey: 'id' });
+//Specialties.belongsToMany(Responsibilities, {through: 'resp_specialty', foreignKey: 'id', otherKey: 'id' });
 
 export {RespSpecialty};

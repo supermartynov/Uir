@@ -25,6 +25,10 @@ Specialties.init({
     description: {
         type: Sequelize.TEXT,
         allowNull: true
+    },
+    imgUrl: {
+        type: Sequelize.TEXT,
+        allowNull: true
     }
 },{
     sequelize,

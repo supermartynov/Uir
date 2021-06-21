@@ -9,6 +9,9 @@ app.use(express.json())
 app.use(cors())
 app.use('/specialties', router.routerSpecialties)
 app.use('/vacancies', router.routerVacancies)
+app.use('/skills', router.routerSkills)
+app.use('/knowledge', router.routerKnowledge)
+app.use('/skillSpecialty', router.routerSkillSpecialties)
 
 async function startApp() {
     app.listen(5005, () => {
