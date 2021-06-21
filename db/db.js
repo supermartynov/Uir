@@ -30,7 +30,7 @@ async function fillDataBase(specialtiesArr, country) {
                         max_salary: currentVacancies[String(j)].salaryMax ? currentVacancies[String(j)].salaryMax : 0,
                         company_name: currentVacancies[String(j)].companyName,
                         description: currentVacancies[String(j)].description,
-                        specialtyId: i + 1,
+                        specialty_id: i + 1,
                         url: currentVacancies[String(j)].url,
                         location: currentVacancies[String(j)].location.join(", ")
                     })

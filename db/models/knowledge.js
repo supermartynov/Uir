@@ -1,5 +1,4 @@
 import {Sequelize, DataTypes, Model, sequelize} from './imports.js'
-import {SkillSpecialty} from "./skill_specialty.js";
 import {Skills} from "./skills.js";
 
 
@@ -22,7 +21,6 @@ Knowledge.init({
 }
 )
 
-Knowledge.hasMany(SkillSpecialty, {foreignKey: 'knowledge_id', onUpdate: 'Cascade', onDelete: 'Cascade'});
 
 
 export {Knowledge}

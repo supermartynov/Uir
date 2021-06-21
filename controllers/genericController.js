@@ -39,10 +39,11 @@ const genericCrud = (model) => ({
 
     async getAllBySpecialtyId(req, res){
         try {
-            const id = req.query.specialtyId
+            const id = req.query.specialty_id
+            console.log(id)
             const item = await model.findAll({
                 where: {
-                    "specialtyId" : id
+                    "specialty_id" : id
                 }
             })
             return res.status(200).send(item)

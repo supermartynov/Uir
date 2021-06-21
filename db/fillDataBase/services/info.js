@@ -72,6 +72,19 @@ const skillSpecialty = [
         specialtyId: 1
     }
 ]
+// 'PHP developer', 'Java developer', 'Python developer', 'Go developer', 'C++ developer'
+const imgDescr = [
+    {
+
+        name: 'PHP developer',
+        imgUrl: 'https://www.inera.it/wp-content/uploads/2018/12/php.jpg',
+        description: 'Программист PHP выполняет основную работу по созданию web-сайта. Фактически он готовит фундамент, крышу, стены и все несущие конструкции, если провести аналогию со строительством. ' +
+            'Для полного выполнения заказа в команду привлекаются и другие профессионалы: веб-дизайнеры, ' +
+            'seo-специалисты, контент-менеджеры, копирайтеры и др. Чем крупнее проект, тем большее количество сотрудников по разным направлениям требуется для его реализации.\n' +
+            '\n'
+
+    }
+]
 
 
-export {softSkills, hardSkills}
+export {softSkills, hardSkills, imgDescr}

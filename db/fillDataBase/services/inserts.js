@@ -1,6 +1,6 @@
 import {request} from "./generic.cervice.js";
 import {Skills} from "../../models/skills.js";
-import {softSkills, hardSkills} from "./info.js";
+import {softSkills, hardSkills, imgDescr} from "./info.js";
 import {findSpecialtyByName, findSkillByName} from "./finders.js";
 import {Specialties} from "../../models/specialties.js";
 import {SkillSpecialty} from "../../models/skill_specialty.js";
@@ -34,6 +34,13 @@ async function insertSkillSpecialties(specialty, skill) {
     specialty_id: await findSpecialtyByName(specialty)
   })
 }
+async function insertImgDescription(specialty, body) {
+  const item = await Specialties.update( body, {
+    where: {
+      id: await findSpecialtyByName(specialty)
+    }
+  })
+}
 
 
 async function insertIntoSpecialties(){
@@ -44,13 +51,12 @@ async function insertIntoSpecialties(){
       await insertSkillSpecialties(specialty, skill)
     }
   }
-
-
 }
 
-await insertSkillsArr(softSkills, hardSkills)
+/*await insertSkillsArr(softSkills, hardSkills)
 await SkillSpecialty.sync({force: true})
-await insertIntoSpecialties()
+await insertIntoSpecialties()*/
+insertImgDescription('PHP developer', imgDescr[0])
 
 
 export {

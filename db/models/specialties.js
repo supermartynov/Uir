@@ -37,6 +37,6 @@ Specialties.init({
 })
 
 
-Specialties.hasMany(Vacancies, {foreignKey: 'specialtyId', onUpdate: 'Cascade', onDelete: 'Cascade'});
+Specialties.hasMany(Vacancies, {foreignKey: 'specialty_id', onUpdate: 'Cascade', onDelete: 'Cascade'});
 export {Specialties};
 
