@@ -61,3 +61,4 @@ async function fillDB() {
 
 //fillDataBase(specialty, 'gb')
 fillDB()
+

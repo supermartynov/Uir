@@ -1,6 +1,6 @@
 import {request} from "./generic.cervice.js";
 import {Skills} from "../../models/skills.js";
-import {softSkills, hardSkills, imgDescr} from "./info.js";
+import {softSkills, hardSkills, specialtyDescr} from "./info.js";
 import {findSpecialtyByName, findSkillByName} from "./finders.js";
 import {Specialties} from "../../models/specialties.js";
 import {SkillSpecialty} from "../../models/skill_specialty.js";
@@ -34,14 +34,16 @@ async function insertSkillSpecialties(specialty, skill) {
     specialty_id: await findSpecialtyByName(specialty)
   })
 }
-async function insertImgDescription(specialty, body) {
-  const item = await Specialties.update( body, {
-    where: {
-      id: await findSpecialtyByName(specialty)
-    }
-  })
-}
 
+async function insertImgDescription(body) {
+  for (let i = 0; i < body.length; i ++){
+    const item = await Specialties.update(body[i], {
+      where: {
+        id: await findSpecialtyByName(body[i].name)
+      }
+    })
+  }
+}
 
 async function insertIntoSpecialties(){
   const specialties = ['PHP developer', 'Java developer', 'Python developer', 'Go developer', 'C++ developer']
@@ -53,11 +55,18 @@ async function insertIntoSpecialties(){
   }
 }
 
-/*await insertSkillsArr(softSkills, hardSkills)
-await SkillSpecialty.sync({force: true})
-await insertIntoSpecialties()*/
-insertImgDescription('PHP developer', imgDescr[0])
 
+/*
+await insertSkillsArr(softSkills, hardSkills)
+await SkillSpecialty.sync({force: true})
+await insertIntoSpecialties()
+await insertImgDescription(specialtyDescr)
+*/
+await insertSkillSpecialties('PHP developer', 'Знание PHP')
+await insertSkillSpecialties('Java developer', 'Знание Java')
+await insertSkillSpecialties('Python developer', 'Знание Python')
+await insertSkillSpecialties('Go developer', 'Знание Go')
+await insertSkillSpecialties('C++ developer', 'Знание C++')
 
 export {
   getSpecialties, getSpecialty, getSpecialtyNames

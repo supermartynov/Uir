@@ -52,6 +52,7 @@ const genericCrud = (model) => ({
         }
     },
 
+
     //only for vacancies
 
     async addDescription({ params: {id}, body}, res) {

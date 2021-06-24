@@ -19,5 +19,14 @@ async function findSpecialtyByName(specialty) {
     })
     return currentSpecialty[ '0' ].dataValues.id
 }
+async function findKnowledgeLevelByName(level) {
+    const currentSpecialty = await Specialties.findAll({
+        attributes: ['id'],
+        where: {
+            skill_name: level
+        }
+    })
+    return currentSpecialty[ '0' ].dataValues.id
+}
 
-export {findSkillByName, findSpecialtyByName}
+export {findSkillByName, findSpecialtyByName, findKnowledgeLevelByName}
